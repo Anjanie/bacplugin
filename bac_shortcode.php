@@ -51,7 +51,8 @@ function content_custom_post_type() {
             while( $query->have_posts() ){
                 $string .= '<p>';
 				$query->the_post();
-                $string .= '<p>' . get_the_title() . the_post_thumbnail() . '</p>'; //This code will display the title of the post and the featured image thumbnail.
+                $string .= '<p><a href="' . get_permalink() . '">' . get_the_title() . get_the_post_thumbnail() . '</a></p>'; //This code will display the title of the post and the featured image thumbnail. Referenced from http://wordpress.stackexchange.com/questions/58880/shortcode-displaying-custom-post-types
+			
             }
 			$string .= '</p>';
         }
@@ -60,3 +61,6 @@ function content_custom_post_type() {
 		
        
     }
+	
+	
+	
