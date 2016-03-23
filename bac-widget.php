@@ -1,6 +1,6 @@
 <?php	
 /*
-	Plugin Name: BA Clotheirs Widget
+	Plugin Name: BA Clothiers Widget
 	Description: This is a widget to display yearly archives.
 	Plugin URI: http://google.com
 	Author: Bisma Ayyaz, Anmol Joy, Anjanie Rupnarain
