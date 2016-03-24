@@ -24,3 +24,21 @@
 	background-image:  url("Glogo.jpg");;
 }
 
+.attachment-post-thumbnail{
+	
+	position: relative;
+	text-align: center;
+	}
+
+.size-post-thumbnail {
+	width: 100px;
+	height: 100px;
+	float: center;	
+}
+
+#widget_latest_bac {
+	text-align: center;
+	float: center;
+	padding: 2px, 2px, 2px, 2px;
+	margin: auto;
+}
