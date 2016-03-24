@@ -44,7 +44,7 @@ function content_custom_post_type() {
         $args = array(
             'post_type' => 'content', //the post type that will be displayed from this shortcode is the content of the posts.
             'post_status' => 'publish', //the content of the post will be published for users to see.
-			'posts_per_page' => 3 //only three posts from the post type will appear on the designated page.
+			'posts_per_page' => 5 //only five posts from the post type will appear on the designated page.
         );
  $string = '';
         $query = new WP_Query( $args );
