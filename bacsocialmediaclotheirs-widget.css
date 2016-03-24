@@ -32,9 +32,7 @@
 .widget .size-post-thumbnail {
 	width: 260px;
 	height: 150px;
-	float: center;
-
-	
+	float: center;	
 }
 
 #widget_latest_bac {
@@ -43,3 +41,6 @@
 	text-align: center;
 }
 
+#archives-2{
+	display: inline-block;
+}
