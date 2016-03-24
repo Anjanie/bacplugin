@@ -25,28 +25,21 @@
 }
 
 .attachment-post-thumbnail{
-	
 	position: relative;
 	text-align: center;
 	}
 
-.size-post-thumbnail {
-	width: 100px;
-	height: 100px;
+.widget .size-post-thumbnail {
+	width: 260px;
+	height: 150px;
 	float: center;
+
 	
 }
 
 #widget_latest_bac {
 	padding: 10px;
 	margin: auto;
+	text-align: center;
 }
 
-ul{
-	text-align:center;
-	padding: 10px;
-	float:center;
-}
-
-li{text-align: center;
-}
