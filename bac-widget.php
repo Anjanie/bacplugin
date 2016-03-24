@@ -158,7 +158,7 @@ $options = get_option( 'bac_custom_widget' );
 // If options  do not exist then the default setting will be set.
 if ( !is_array( $options ))
 $options = array(
-'title' => 'Latest Posts',
+'title' => 'Bac Latest Posts',
 'phead' => 'h2',
 'ptype' => 'post',
 'pshow' => '3'
