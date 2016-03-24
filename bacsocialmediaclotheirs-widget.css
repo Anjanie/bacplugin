@@ -33,12 +33,20 @@
 .size-post-thumbnail {
 	width: 100px;
 	height: 100px;
-	float: center;	
+	float: center;
+	
 }
 
 #widget_latest_bac {
-	text-align: center;
-	float: center;
-	padding: 2px, 2px, 2px, 2px;
+	padding: 10px;
 	margin: auto;
+}
+
+ul{
+	text-align:center;
+	padding: 10px;
+	float:center;
+}
+
+li{text-align: center;
 }
