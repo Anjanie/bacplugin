@@ -1,7 +1,7 @@
 <?php	
 /*
-	Plugin Name: BA Clothiers Custom Post and Social Platform Widget
-	Description: Customs posts Social Platform Links 
+	Plugin Name: BAC Custom Post and Social Platform Widget
+	Description: Customs posts and Social Platform Links 
 	Plugin URI: http://google.com
 	Author: Bisma Ayyaz, Anmol Joy, Anjanie Rupnarain
 	Author URI: http://google.com
@@ -9,18 +9,18 @@
 	Version: 1.0
 */
 
-//Code taken from the website: http://designmodo.com/wordpress-social-media-widget/
-// Create the Widget
+//Code has been referenced from the website: http://designmodo.com/wordpress-social-media-widget/
+// Code below creates the social media platform widget for bac clotheirs.
 class BacSocialMediaClotheirs extends WP_Widget {
 
-    // Initialize the Widget
+    // Code below initializes the widget for social media platforms (facebook and Google plus) for bac.
     public function __construct() {
         parent::__construct('BacSocialMediaClotheirs', __('Social Platforms', 'translation_domain'), 
                 array('description' => __('Social Platform Links', 'translation_domain'),)
         );
     }
 
-// Determines what will appear on the site
+// Code below will determine what will appear on the main site, meaning at the front end.
    
     public function widget($args, $instance) {
 
@@ -28,7 +28,7 @@ class BacSocialMediaClotheirs extends WP_Widget {
         $facebook = $instance['facebook'];
         $google = $instance['google'];
        
-// social platform links
+// code below has the social platform links
         $facebook_profile = '<a class="facebook" href="' . $facebook . '"><i class="fa fa-facebook"></i></a>';
         $google_profile = '<a class="google" href="' . $google . '"><i class="fa fa-google-plus"></i></a>';
         
@@ -53,7 +53,6 @@ class BacSocialMediaClotheirs extends WP_Widget {
         empty($instance['title']) ? $title = 'Bac Social Platform' : null;
 
         isset($instance['facebook']) ? $facebook = $instance['facebook'] : null;
-        isset($instance['twitter']) ? $twitter = $instance['twitter'] : null;
         isset($instance['google']) ? $google = $instance['google'] : null;
         ?>
         <p>
@@ -75,7 +74,7 @@ class BacSocialMediaClotheirs extends WP_Widget {
 
     }
 
-// Sanitizes, saves and submits the user-generated content. 
+// This code below sanitizes (meaning sanitizing the widget form values as soon as they are saved), saves and then submits the user-generated content. 
     public function update($new_instance, $old_instance) {
         $instance = array();
         $instance['title'] = (!empty($new_instance['title']) ) ? strip_tags($new_instance['title']) : '';
@@ -86,25 +85,22 @@ class BacSocialMediaClotheirs extends WP_Widget {
     }
 
 }
-// register Bac Widget
+// Code below registers BA Clotheirs Socail Media Platform widget.
 function register_bacsocialmediaclotheirs() {
     register_widget('BacSocialMediaClotheirs');
 }
 
 add_action('widgets_init', 'register_bacsocialmediaclotheirs');
     
-// enqueuing css stylesheet
+// Code below is enqueuing the css stylesheet for the plugin
 function bacsocialmediaclotheirs_widget_css() {
     wp_enqueue_style('social-profile-widget', plugins_url('bacsocialmediaclotheirs-widget.css', __FILE__));
 }
 
 add_action('wp_enqueue_scripts', 'bacsocialmediaclotheirs_widget_css');
     
-
-
-
-
-//Second Widget   - Custom Posts Widget
+//This is another Custom Post Type widget for BA Clotheirs 
+//It is referenced from https://premium.wpmudev.org/blog/how-to-make-a-sidebar-widget-to-display-recent-custom-posts-by-jared-williams/
 
 function bac_custom_widget_init() {
 if ( !function_exists( 'register_sidebar_widget' ))
@@ -114,17 +110,21 @@ function bac_custom_widget($args) {
 global $post;
 extract($args);
 
-// These are our own options
+// Code below shows the options available to change from the Wordpress.
 $options = get_option( 'bac_custom_widget' );
-$title = $options['title']; // Widget title
-$phead = $options['phead']; // Heading format
-$ptype = $options['ptype']; // Post type
-$pshow = $options['pshow']; // Number of Tweets
+// Title of the widget.
+$title = $options['title']; 
+// Format of the geading of the widget.
+$phead = $options['phead']; 
+// Post type
+$ptype = $options['ptype']; 
+// Number of Posts to be shown
+$pshow = $options['pshow']; 
 
 $beforetitle = '';
 $aftertitle = '';
 
-// Output
+// Code below is the output of the widget
 echo $before_widget;
 
 if ($title) echo $beforetitle . $title . $aftertitle;
@@ -142,13 +142,9 @@ endwhile; ?>
 
 <?php endif; ?>
 
-<!-- NEEDS FIX: to display link to full list of posts page
-<?php $obj = get_post_type_object($ptype); ?>
-<div class="latest_cpt_icon"><a href="<?php site_url('/'.$obj->query_var); ?>" rel="bookmark"><?php _e( 'View all ' . $obj->labels->name . ' posts' ); ?>&rarr;</a></div>
-//-->
 
 <?php
-// echo widget closing tag
+// Code below is echoing the widget closing tag
 echo $after_widget;
 }
 
@@ -157,9 +153,9 @@ echo $after_widget;
 */
 function bac_custom_widget_control() {
 
-// Get options
+// Code to get options from the database
 $options = get_option( 'bac_custom_widget' );
-// options exist? if not set defaults
+// If options  do not exist then the default setting will be set.
 if ( !is_array( $options ))
 $options = array(
 'title' => 'Latest Posts',
@@ -175,13 +171,13 @@ $options['ptype'] = $_POST['latest-bac-ptype'];
 $options['pshow'] = $_POST['latest-bac-pshow'];
 update_option( 'bac_custom_widget', $options );
 }
-// Get options for form fields to show
+// Code below is getting options for form fields to show
 $title = $options['title'];
 $phead = $options['phead'];
 $ptype = $options['ptype'];
 $pshow = $options['pshow'];
 
-// The widget form fields
+// Code below is the form fields for the custom post widget.
 ?>
 
 <label for="latest-bac-title"><?php echo __( 'Widget Title' ); ?>
@@ -196,7 +192,8 @@ foreach ($post_types as $post_type ) { ?>
 
 <select name="latest-bac-ptype"><option selected="selected" value="<?php echo $post_type; ?>"><?php echo $post_type;?></option></select><?php } ?>
 
-<label for="latest-bac-pshow"><?php echo __( 'Number of posts to show' ); ?>
+
+<label for="latest-bac-pshow"><?php echo __( 'Number of posts to be shown' ); ?>
 <input id="latest-bac-pshow" type="text" name="latest-bac-pshow" size="2" value="<?php echo $pshow; ?>" />
 </label>
 
@@ -204,6 +201,7 @@ foreach ($post_types as $post_type ) { ?>
 <?php
 }
 
+// Code below is for registering the bac custom post type widget.
 wp_register_sidebar_widget( 'widget_latest_bac', __('Latest Custom Posts'), 'bac_custom_widget' );
 wp_register_widget_control( 'widget_latest_bac', __('Latest Custom Posts'), 'bac_custom_widget_control', 300, 200 );
 
