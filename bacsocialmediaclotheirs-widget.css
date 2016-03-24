@@ -1,0 +1,26 @@
+
+.logos a {
+	padding: 8px 10px 6px;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	margin: 1px 5px;
+	border: red 20px;
+	border-radius: 10px;		
+}
+
+.logos {
+	text-align: center;
+	padding-top: 5px;
+	position: relative;
+	margin: 1px 10px;
+}
+
+.logos .fa-facebook, .logos .facebook {
+	background-image: url("fblogo.png");
+}
+
+.logos .fa-google, .logos .google {
+	background-image:  url("Glogo.jpg");;
+}
+
