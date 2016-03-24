@@ -134,7 +134,7 @@ if( $pq->have_posts() ) :
 ?>
 <ul>
 <ul><?php while($pq->have_posts()) : $pq->the_post(); ?>
-    <li><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></li>
+    <li><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?><?php the_post_thumbnail(); ?></a></li>
 </ul>
 </ul>
 <?php wp_reset_query();
