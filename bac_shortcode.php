@@ -16,21 +16,22 @@ function ba_clothiers_enqueue_scripts(){
 add_action('wp_enqueue_scripts', 'ba_clothiers_enqueue_scripts');
 
 //The custom post type that displays the thumbnails featured image option for each post.
-    
+
+//This code below enables the custom post type to have a featured image option.   
 function content_custom_post_type() {
-        register_post_type( 'content',
+        register_post_type( 'content', //This code registers the custom post type that has been requested. In this case, it is content.
             array(
                 'labels' => array(
-                    'name' => __( 'content' ),
-                    'singular_name' => __( 'content' )
+                    'name' => __( 'content' ), //This is the name of the custom post type.
+                    'singular_name' => __( 'content' ) //This is the name of the custom post type.
                 ),
-                'public' => true,
-                'has_archive' => true
+                'public' => true, //The posts are available for the public to view.
+                'has_archive' => true //The posts can be archived. 
             )
         );
     }
     add_action( 'init', 'content_custom_post_type' );
-    add_post_type_support( 'content', 'thumbnail' ); // referenced from http://wordpress.stackexchange.com/questions/51897/how-come-featured-image-isnt-showing-up-in-my-custom-post-type
+    add_post_type_support( 'content', 'thumbnail' ); // This code will create a featured image option in the custom post type. Referenced from http://wordpress.stackexchange.com/questions/51897/how-come-featured-image-isnt-showing-up-in-my-custom-post-type
 
 //This code adds a shortcode button on the back end of wordpress.
     add_shortcode( 'content_shortcode', 'content_short_code' );
@@ -47,8 +48,8 @@ function content_custom_post_type() {
         );
  $string = '';
         $query = new WP_Query( $args );
-        if( $query->have_posts() ){
-            while( $query->have_posts() ){
+        if( $query->have_posts() ){ //This code checks if there are posts contained in the requested custom post type, which is content.
+            while( $query->have_posts() ){ //This code confirms that there are posts in the custom post type and executes the loop.
                 $string .= '<p>';
 				$query->the_post();
                 $string .= '<p><a href="' . get_permalink() . '">' . get_the_title() . get_the_post_thumbnail() . '</a></p>'; //This code will display the title of the post and the featured image thumbnail. Referenced from http://wordpress.stackexchange.com/questions/58880/shortcode-displaying-custom-post-types
@@ -57,7 +58,7 @@ function content_custom_post_type() {
 			$string .= '</p>';
         }
         wp_reset_postdata();
-        return $string;
+        return $string; //The loop ends at this code.
 		
        
     }
